@@ -1,0 +1,162 @@
+/* ===== Base ===== */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #2b2b2b;
+  line-height: 1.6;
+  max-width: 820px;
+  margin: 48px auto;
+  padding: 0 20px;
+  background-color: #f4f3f1; /* 莫兰迪浅灰米色 */
+}
+
+/* ===== Headings ===== */
+h1 {
+  max-width: 960px;        /* 限制行宽，避免超大屏拉太散 */
+  margin: 0 auto 2rem;    /* 居中 + 下方留白 */
+  font-size: 2.4rem;
+  line-height: 1.25;
+  text-align: center;
+}
+
+h2 {
+  font-size: 22px;
+  margin-top: 48px;
+  margin-bottom: 12px;
+}
+
+/* ===== Sections ===== */
+section {
+  background-color: #ffffff;
+  padding: 24px 28px;
+  margin-bottom: 32px;
+  border: 1px solid #e1dfdb;   /* 莫兰迪灰边框 */
+  border-radius: 8px;
+}
+
+/* Calculator 区块稍微强调一点 */
+#calculator {
+  border-color: #cfcac3;
+  background-color: #faf9f7;
+  margin-top: 2.5rem;
+}
+
+#calculator > h2 {
+  text-align: center;
+  font-size: 1.25rem;      /* 再小一点 */
+  font-weight: 500;        /* 不要太粗 */
+  letter-spacing: 0.08em;  /* 稍微拉开，更像工具模块 */
+  color: #6f7a73;          /* 更浅的莫兰迪灰绿 */
+  margin-bottom: 20px;
+}
+
+/* ===== Text ===== */
+p {
+  margin-bottom: 16px;
+  color: #444;
+}
+
+/* ===== Form ===== */
+label {
+  display: block;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+input {
+  padding: 6px 8px;
+  border: 1px solid #cfcac3;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: #9f9a93; /* 莫兰迪深灰 */
+  background-color: #fff;
+}
+
+/* ===== Button ===== */
+button {
+  margin-top: 12px;
+  padding: 8px 18px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid #9f9a93;
+  background-color: #9f9a93; /* 莫兰迪灰棕 */
+  color: #fff;
+}
+
+button:hover {
+  background-color: #8f8a84;
+  border-color: #8f8a84;
+}
+
+
+
+
+
+/* =========================
+   Calculator 表单列 & 结果框：同宽同对齐
+   ========================= */
+
+#calculator {
+  text-align: center;
+}
+
+/* 关键：固定两列宽度，这样右侧 input 的“右边界”是稳定的 */
+#calculator .form-wrap {
+  --label-col: 260px;
+  --input-col: 315px;
+  --gap: 12px;
+
+  width: calc(var(--label-col) + var(--gap) + var(--input-col));
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* 每一行 label：左侧文字 + 右侧输入 */
+#calculator .form-wrap label {
+  display: grid;
+  grid-template-columns: var(--label-col) var(--input-col);
+  align-items: center;
+  column-gap: var(--gap);
+
+  margin: 12px 0;
+  text-align: left;
+}
+
+/* input 右侧列撑满，所以 input 的右边=表单右边 */
+#calculator .form-wrap input {
+  box-sizing: border-box;
+}
+
+/* 按钮居中 */
+#calculator .form-wrap button {
+  display: block;
+  margin: 18px auto 0;
+}
+
+/* 结果框：左对齐 label 起点，右对齐 input 右边，并且自动换行 */
+#calculator .form-wrap #result {
+  margin: 18px 0 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 12px 14px;
+  background-color: #eef0ec;
+  border-left: 4px solid #9aa39a;
+  font-weight: 600;
+
+  /* ✅ 自动换行（别用 nowrap） */
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+
+/* Day6: minimal error highlight */
+.input-error {
+  border-color: #c97b7b !important;
+  background-color: #fff7f7;
+}
